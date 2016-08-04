@@ -1,0 +1,97 @@
+id: RDLinWeb
+name: RD-Lin-Web
+description: Cent OS 6.6
+status: PUBLISHED
+properties:
+  __nsx.edge_reservation_policy:
+    fixed: Eng-RP
+    secured: false
+    visible: false
+  __nsx.management_endpoint_name:
+    fixed: vCenter
+    secured: false
+    visible: false
+  __nsx.transport_zone_name:
+    fixed: SDDC Transport Zone
+    secured: false
+    visible: false
+components:
+  RD-Lin-Server:
+    type: Infrastructure.CatalogItem.Machine.Virtual.vSphere
+    data:
+      CloneSpec:
+        default: Lin-Cust
+        required: false
+        secured: false
+        visible: false
+      _cluster:
+        default: 1
+        max: 1
+        min: 1
+      action:
+        fixed: FullClone
+      allow_storage_policies:
+        fixed: false
+      blueprint_type:
+        fixed: '1'
+      cpu:
+        default: 1
+        max: 1
+        min: 1
+      description: Build from Cent OS  6.6.
+      disks:
+      - capacity: 16
+        custom_properties: null
+        id: 1469955675080
+        initial_location: ''
+        is_clone: true
+        label: Hard disk 1
+        storage_reservation_policy: ''
+        userCreated: false
+        volumeId: 0
+      guest_customization_specification: Lin-Cust
+      machine_prefix:
+        fixed:
+          id: RDLin
+      max_network_adapters: {}
+      max_volumes: {}
+      memory:
+        default: 2048
+        max: 4096
+        min: 2048
+      nics:
+      - address: ''
+        assignment_type: Static
+        id: 0
+        load_balancing: ''
+        network: ${_resource~Sec_ZoneWebTier}
+        network_profile: Sec_Zone Web Tier
+      provisioning_workflow:
+        fixed:
+          id: CloneWorkflow
+          label: CloneWorkflow
+      reservation_policy:
+        id: Eng-RP
+        label: Eng-RP
+      security_groups: []
+      security_tags: []
+      source_machine:
+        fixed:
+          id: 57e56b7e-286c-4d96-9e2c-ed212cc9578c
+          label: Cent OS 6.6 Template
+      source_machine_name:
+        fixed: Cent OS 6.6 Template
+      storage:
+        default: 16
+        max: 16
+        min: 16
+  Sec_ZoneWebTier:
+    type: Infrastructure.Network.Network.Existing
+    data:
+      name:
+        fixed: Sec_ZoneWebTier
+      network_profile:
+        fixed: Sec_Zone Web Tier
+layout:
+  RD-Lin-Server: 1,0
+  Sec_ZoneWebTier: 0,0
