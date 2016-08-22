@@ -1,0 +1,7 @@
+name: "RD-Lin-Web"
+productVersion: "7.0.1-SNAPSHOT"
+data:
+- locator: "composite-blueprint/RDLinWeb.yaml"
+  name: "RD-Lin-Web"
+  description: "RD-Lin-Web"
+exportTime: "2016-08-04T06:14:36.201Z"
